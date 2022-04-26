@@ -1,26 +1,52 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="readon-tranding-layout common-layout">
+    <el-container class="readon-content">
+      <el-header>
+        <app-header></app-header>
+      </el-header>
+
+      <el-container>
+        <el-aside width="200px">
+           <app-aside></app-aside>
+        </el-aside>
+
+        <el-main>
+          <div class="readon-center">
+            <div class="readon-center-inner">
+               <router-view />
+            </div>
+            <el-container>
+              <el-footer>
+                <app-footer></app-footer>
+              </el-footer>
+            </el-container>
+          </div>
+        </el-main>
+      </el-container>
+    </el-container>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AppHeader from "./components/layout/header";
+import AppFooter from "./components/layout/footer";
+import AppAside from "./components/layout/aside";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    AppHeader,
+    AppFooter,
+    AppAside
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.readon-content {
+  height: 100vh;
+}
+.readon-center-inner{
+  min-height: calc(100vh - 120px);;
 }
 </style>
