@@ -1,5 +1,12 @@
 <template>
-  <div class="trend-list">
+  <div
+    class="trend-list"
+    v-loading="loading"
+    element-loading-text="Loading..."
+    :element-loading-svg="svg"
+    element-loading-svg-view-box="-10, -10, 50, 50"
+    element-loading-background="rgba(122, 122, 122, 0.2)"
+  >
     <trend-search></trend-search>
     <div>
       <el-table
@@ -39,10 +46,22 @@
 import TrendSearch from "../../components/trend/search";
 import TrendCard from "../../components/trend/card";
 import apis from "../../apis/trend";
+import apiPaths from "../../constants/apiPath";
+import { ref } from 'vue'
 export default {
   name: "TrendList",
   data() {
     return {
+       svg :`
+        <path class="path" d="
+          M 30 15
+          L 28 17
+          M 25.61 25.61
+          A 15 15, 0, 0, 1, 15 30
+          A 15 15, 0, 1, 1, 27.99 7.5
+          L 15 15
+        " style="stroke-width: 4px; fill: rgba(0, 0, 0, 0)"/>`,
+      loading:true,
       trendList: [],
     };
   },
@@ -71,24 +90,29 @@ export default {
 
   methods: {
     getTrendListData() {
-      console.log(111111,this.$route.params.trendId)
+      this.trendList = [];
+      this.loading = true;
+      console.log('trendid',this.$route.params.trendId)
       let trendId = this.$route.params.trendId;
       // let BuzzsumoTrendingUrl = "https://app.buzzsumo.com/search/trends?topic=sports&hours=24&count=24&result_type=trending_now&ignore=false&id=67220&language=en"
       let BuzzsumoTrendingUrl = "https://api.buzzsumo.com/search/trends.json?topic=sports"
       BuzzsumoTrendingUrl += "&api_key=qqrDzIKuYIBKHMfBiNFDnOIsJXqDEByV"
-      let url =
-        "https://app.buzzsumo.com/rss/trending/NjcyMTlramhha3NkaGFraA%3D%3D/a2poYWtzZGhha2g%3D/a2poYWtzZGhha2g%3D/a2poYWtzZGhha2g%3D/MTIwMTgyMGtqaGFrc2RoYWto/ZW5ramhha3NkaGFraA%3D%3D/dHJlbmRpbmdfbm93a2poYWtzZGhha2g%3D?hours=12";
+      let url = apiPaths[trendId];
       apis
         .getTrendList(url)
         .then((data) => {
-            console.log(data)
+          console.log(data)
           this.trendList = data;
+          this.loading = false;
         })
         .catch((error) => {
           console.log(error);
+          this.loading = false;
         });
     },
   },
 };
 </script>
-<style scoped></style>
+<style scoped>
+@import "./index.scss";
+</style>

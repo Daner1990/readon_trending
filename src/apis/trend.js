@@ -15,10 +15,10 @@ export default {
             channel_items.map((item) => {
               console.log(item)
               data.push({
-                author: (item.author && item.author[0]) || "",
-                shares: parseInt(item["buzzsumo:shares"][0]["buzzsumo:total"][0]) || "",
+                author: (item.author && item.author[0]) || "-",
+                shares: parseInt(item["buzzsumo:shares"][0]["buzzsumo:total"][0]) || "1",
                 description: item.description[0] || "",
-                score: parseInt(item["buzzsumo:shares"][0]["buzzsumo:trending_score"][0]) || "",
+                score: parseInt(item["buzzsumo:shares"][0]["buzzsumo:trending_score"][0]) || "1",
                 description: item.description[0] || "",
                 link: item.link[0] || "",
                 pubDate: item.pubDate[0] || "",
