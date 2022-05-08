@@ -3,7 +3,7 @@
     <div class="aside-title">
       <h5 class="aside-title-txt">Curated Feeds</h5>
     </div>
-    <div class="menu">
+    <div class="menu" :class="currentTrend=='News'?'actived':''" @click="trend('News')">
       <div class="menu-inner">
         <div class="menu-icon">
           <svg width="16px" height="16" xmlns="http://www.w3.org/2000/svg">
@@ -17,7 +17,7 @@
         <div class="menu-txt">News</div>
       </div>
     </div>
-    <div class="menu">
+    <div class="menu" :class="currentTrend=='Sports'?'actived':''" @click="trend('Sports')">
       <div class="menu-inner">
         <div class="menu-icon">
           <svg
@@ -50,7 +50,7 @@
       </div>
     </div>
 
-    <div class="menu">
+    <div class="menu"  :class="currentTrend=='Entertainment'?'actived':''" @click="trend('Entertainment')">
       <div class="menu-inner">
         <div class="menu-icon">
           <svg width="16px" height="16" xmlns="http://www.w3.org/2000/svg">
@@ -64,7 +64,7 @@
         <div class="menu-txt">Entertainment</div>
       </div>
     </div>
-    <div class="menu">
+    <div class="menu"  :class="currentTrend=='Tech'?'actived':''" @click="trend('Tech')">
       <div class="menu-inner">
         <div class="menu-icon">
           <svg width="16px" height="10" xmlns="http://www.w3.org/2000/svg">
@@ -79,7 +79,7 @@
       </div>
     </div>
 
-    <div class="menu">
+    <div class="menu" :class="currentTrend=='Business'?'actived':''" @click="trend('Business')">
       <div class="menu-inner">
         <div class="menu-icon">
           <svg width="16px" height="16" xmlns="http://www.w3.org/2000/svg">
@@ -93,7 +93,7 @@
         <div class="menu-txt">Business</div>
       </div>
     </div>
-    <div class="menu">
+    <div class="menu"  :class="currentTrend=='Video'?'actived':''" @click="trend('Video')">
       <div class="menu-inner">
         <div class="menu-icon">
           <svg width="16px" height="16" xmlns="http://www.w3.org/2000/svg">
@@ -107,7 +107,7 @@
         <div class="menu-txt">Video</div>
       </div>
     </div>
-    <div class="menu">
+    <div class="menu" :class="currentTrend=='Fashion'?'actived':''"  @click="trend('Fashion')">
       <div class="menu-inner">
         <div class="menu-icon">
           <svg width="16px" height="16" xmlns="http://www.w3.org/2000/svg">
@@ -121,7 +121,7 @@
         <div class="menu-txt">Fashion</div>
       </div>
     </div>
-    <div class="menu">
+    <div class="menu" :class="currentTrend=='Science'?'actived':''" @click="trend('Science')">
       <div class="menu-inner">
         <div class="menu-icon">
           <svg width="16px" height="16" xmlns="http://www.w3.org/2000/svg">
@@ -135,7 +135,7 @@
         <div class="menu-txt">Science</div>
       </div>
     </div>
-    <div class="menu">
+    <div class="menu" :class="currentTrend=='Politics'?'actived':''" @click="trend('Politics')">
       <div class="menu-inner">
         <div class="menu-icon">
           <svg width="16px" height="16" xmlns="http://www.w3.org/2000/svg">
@@ -149,7 +149,7 @@
         <div class="menu-txt">Politics</div>
       </div>
     </div>
-    <div class="menu">
+    <div class="menu"  :class="currentTrend=='Health'?'actived':''" @click="trend('Health')">
       <div class="menu-inner">
         <div class="menu-icon">
           <svg width="16px" height="16" xmlns="http://www.w3.org/2000/svg">
@@ -163,7 +163,7 @@
         <div class="menu-txt">Health</div>
       </div>
     </div>
-    <div class="menu">
+    <div class="menu" :class="currentTrend=='Marketing'?'actived':''" @click="trend('Marketing')">
       <div class="menu-inner">
         <div class="menu-icon">
           <svg width="16px" height="16" xmlns="http://www.w3.org/2000/svg">
@@ -177,7 +177,7 @@
         <div class="menu-txt">Marketing</div>
       </div>
     </div>
-    <div class="menu">
+    <div class="menu" :class="currentTrend=='Finance'?'actived':''" @click="trend('Finance')">
       <div class="menu-inner">
         <div class="menu-icon">
           <svg width="16px" height="16" xmlns="http://www.w3.org/2000/svg">
@@ -191,7 +191,7 @@
         <div class="menu-txt">Finance</div>
       </div>
     </div>
-    <div class="menu">
+    <div class="menu" :class="currentTrend=='Bitcoin'?'actived':''" @click="trend('Bitcoin')">
       <div class="menu-inner">
         <div class="menu-icon">
           <svg width="16px" height="16" xmlns="http://www.w3.org/2000/svg">
@@ -205,7 +205,7 @@
         <div class="menu-txt">Bitcoin</div>
       </div>
     </div>
-    <div class="menu">
+    <div class="menu" :class="currentTrend=='Cryptocurrency'?'actived':''" @click="trend('Cryptocurrency')">
       <div class="menu-inner">
         <div class="menu-icon">
           <svg width="16px" height="16" xmlns="http://www.w3.org/2000/svg">
@@ -220,7 +220,7 @@
         <div class="menu-txt">Cryptocurrency</div>
       </div>
     </div>
-    <div class="menu">
+    <div class="menu" :class="currentTrend=='Education'?'actived':''" @click="trend('Education')">
       <div class="menu-inner">
         <div class="menu-icon">
           <svg width="16px" height="16" xmlns="http://www.w3.org/2000/svg">
@@ -234,7 +234,7 @@
         <div class="menu-txt">Education</div>
       </div>
     </div>
-    <div class="menu">
+    <div class="menu" :class="currentTrend=='Coronavirus'?'actived':''" @click="trend('Coronavirus')">
       <div class="menu-inner">
         <div class="menu-icon">
           <svg
@@ -267,14 +267,35 @@
 export default {
   name: "Asider",
   data() {
-    return {};
+    return {
+      currentTrend: ''
+    };
   },
-  created() {},
+  created() {
+    // watch 路由的参数，以便再次获取数据
+    this.$watch(
+      () => this.$route.params,
+      () => {
+        this.currentTrend =this.$route.params.trendId;
+      },
+      // 组件创建完后获取数据，
+      // 此时 data 已经被 observed 了
+      { immediate: true }
+    )
+  },
   watch: {
     $route(to, from) {},
   },
 
-  methods: {},
+  methods: {
+      trend(type){
+        if(type != this.currentTrend){
+          this.$router.push({ path: `/trending/${type}`  })
+        }
+          
+
+      }
+  },
 };
 </script>
 

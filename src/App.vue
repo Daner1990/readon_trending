@@ -7,13 +7,13 @@
 
       <el-container>
         <el-aside width="200px">
-           <app-aside></app-aside>
+          <app-aside></app-aside>
         </el-aside>
 
         <el-main>
           <div class="readon-center">
             <div class="readon-center-inner">
-               <router-view />
+              <router-view />
             </div>
             <el-container>
               <el-footer>
@@ -37,7 +37,7 @@ export default {
   components: {
     AppHeader,
     AppFooter,
-    AppAside
+    AppAside,
   },
 };
 </script>
@@ -46,7 +46,8 @@ export default {
 .readon-content {
   height: 100vh;
 }
-.readon-center-inner{
-  min-height: calc(100vh - 120px);;
+.readon-center-inner {
+  height: calc(100vh - 120px);
+  overflow-y: scroll;
 }
 </style>

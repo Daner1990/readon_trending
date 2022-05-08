@@ -12,6 +12,15 @@
 }
 .menu{
     padding: 5px 0px;
+    cursor: pointer;
+}
+.menu:hover{
+    background-color: bisque;
+}
+.menu.actived{
+    background-color: #a0cfff;
+    font-weight: bold;
+    color: white;
 }
 .menu-inner{
     padding: 0px 20px;

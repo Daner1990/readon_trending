@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <span class="title">ReadON</span>
+    <span class="title">ReadON Trend</span>
   </div>
 </template>
 <script>
