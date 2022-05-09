@@ -1,3 +1,4 @@
 export default {
-    DefaultFilterTime:24
+    DefaultFilterTime:24,
+    DefaultFilterCourtry:"all"
 }

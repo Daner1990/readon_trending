@@ -2,6 +2,7 @@
   <div class="trend-list">
     <trend-search
       @updateFilterTime="updateFilterTime"
+      @updateFilterCourtry="updateFilterCourtry"
       :filterTime="filterTime"
     ></trend-search>
     <div>
@@ -67,6 +68,7 @@ export default {
       loading: true,
       trendList: [],
       filterTime: trendDefaultValues.DefaultFilterTime,
+      filterCourtry: trendDefaultValues.DefaultFilterCourtry,
     };
   },
   components: {
@@ -86,7 +88,21 @@ export default {
       () => this.filterTime,
       () => {
         console.log("trendview", this.filterTime);
-        this.getTrendListData({ hours: this.filterTime });
+        this.getTrendListData({
+          hours: this.filterTime,
+          courtry: this.filterCourtry,
+        });
+      },
+      { immediate: true }
+    );
+    this.$watch(
+      () => this.filterCourtry,
+      () => {
+        console.log("trendview", this.filterCourtry);
+        this.getTrendListData({
+          hours: this.filterTime,
+          courtry: this.filterCourtry,
+        });
       },
       { immediate: true }
     );
@@ -102,6 +118,9 @@ export default {
     updateFilterTime(time) {
       this.filterTime = time;
     },
+    updateFilterCourtry(courtry) {
+      this.filterCourtry = courtry;
+    },
     getTrendListData() {
       this.trendList = [];
       this.loading = true;
@@ -111,10 +130,13 @@ export default {
       // let BuzzsumoTrendingUrl =
       // "https://api.buzzsumo.com/search/trends.json?topic=sports";
       // BuzzsumoTrendingUrl += "&api_key=qqrDzIKuYIBKHMfBiNFDnOIsJXqDEByV";
-      let url = apiPaths[trendId];
+      let url = apiPaths({
+        trendId: trendId,
+        courtry: this.filterCourtry,
+      });
       apis
-        .getTrendList(url,{
-          hours:this.filterTime
+        .getTrendList(url, {
+          hours: this.filterTime,
         })
         .then((data) => {
           console.log(data);
