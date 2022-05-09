@@ -25,6 +25,7 @@ let coutryList = {
   india:"SW5kaWFramhha3NkaGFraA%3D%3D",
   indonesia:"SW5kb25lc2lha2poYWtzZGhha2g%3D",
   southkorea:"U291dGggS29yZWFramhha3NkaGFraA%3D%3D",
+  usa:"VW5pdGVkIFN0YXRlc2tqaGFrc2RoYWto"
 };
 
 let courtryRelativeList = {
@@ -32,7 +33,8 @@ let courtryRelativeList = {
   japan: "YWxsa2poYWtzZGhha2g%3D",
   india:"YWxsa2poYWtzZGhha2g%3D",
   indonesia:"YWxsa2poYWtzZGhha2g%3D",
-  southkorea:"YWxsa2poYWtzZGhha2g",
+  southkorea:"YWxsa2poYWtzZGhha2g%3D",
+  usa:"YWxsa2poYWtzZGhha2g%3D",
 };
 
 export default function (params = {}) {

@@ -79,6 +79,10 @@ export default {
           value: "indonesia",
         },
         { label: "South Korea", value: "southkorea" },
+        {
+          label: "USA",
+          value: "usa",
+        },
       ],
 
       selectTime: {},
