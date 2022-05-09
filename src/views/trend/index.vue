@@ -1,19 +1,21 @@
 <template>
-  <div
-    class="trend-list"
-    v-loading="loading"
-    element-loading-text="Loading..."
-    :element-loading-svg="svg"
-    element-loading-svg-view-box="-10, -10, 50, 50"
-    element-loading-background="rgba(122, 122, 122, 0.2)"
-  >
-    <trend-search></trend-search>
+  <div class="trend-list">
+    <trend-search
+      @updateFilterTime="updateFilterTime"
+      :filterTime="filterTime"
+    ></trend-search>
     <div>
       <el-table
+        class="trend-list-content"
         :data="trendList"
-        :default-sort="{ prop: 'shares', order: 'descending' }"
+        :default-sort="{ prop: 'score', order: 'descending' }"
         stripe
         style="width: 100%"
+        v-loading="loading"
+        element-loading-text="Loading..."
+        :element-loading-svg="svg"
+        element-loading-svg-view-box="-10, -10, 50, 50"
+        element-loading-background="rgba(122, 122, 122, 0.2)"
       >
         <el-table-column prop="title" label="title" width="250" />
         <el-table-column prop="author" label="author" width="120" />
@@ -47,12 +49,13 @@ import TrendSearch from "../../components/trend/search";
 import TrendCard from "../../components/trend/card";
 import apis from "../../apis/trend";
 import apiPaths from "../../constants/apiPath";
-import { ref } from 'vue'
+import trendDefaultValues from "../../constants/trendDefault";
+import { ref } from "vue";
 export default {
   name: "TrendList",
   data() {
     return {
-       svg :`
+      svg: `
         <path class="path" d="
           M 30 15
           L 28 17
@@ -61,8 +64,9 @@ export default {
           A 15 15, 0, 1, 1, 27.99 7.5
           L 15 15
         " style="stroke-width: 4px; fill: rgba(0, 0, 0, 0)"/>`,
-      loading:true,
+      loading: true,
       trendList: [],
+      filterTime: trendDefaultValues.DefaultFilterTime,
     };
   },
   components: {
@@ -74,12 +78,18 @@ export default {
     this.$watch(
       () => this.$route.params,
       () => {
-        this.getTrendListData()
+        this.getTrendListData();
       },
-      // 组件创建完后获取数据，
-      // 此时 data 已经被 observed 了
       { immediate: true }
-    )
+    );
+    this.$watch(
+      () => this.filterTime,
+      () => {
+        console.log("trendview", this.filterTime);
+        this.getTrendListData({ hours: this.filterTime });
+      },
+      { immediate: true }
+    );
   },
   mounted() {
     // this.getTrendListData();
@@ -89,19 +99,25 @@ export default {
   },
 
   methods: {
+    updateFilterTime(time) {
+      this.filterTime = time;
+    },
     getTrendListData() {
       this.trendList = [];
       this.loading = true;
-      console.log('trendid',this.$route.params.trendId)
+      console.log("trendid", this.$route.params.trendId);
       let trendId = this.$route.params.trendId;
       // let BuzzsumoTrendingUrl = "https://app.buzzsumo.com/search/trends?topic=sports&hours=24&count=24&result_type=trending_now&ignore=false&id=67220&language=en"
-      let BuzzsumoTrendingUrl = "https://api.buzzsumo.com/search/trends.json?topic=sports"
-      BuzzsumoTrendingUrl += "&api_key=qqrDzIKuYIBKHMfBiNFDnOIsJXqDEByV"
+      // let BuzzsumoTrendingUrl =
+      // "https://api.buzzsumo.com/search/trends.json?topic=sports";
+      // BuzzsumoTrendingUrl += "&api_key=qqrDzIKuYIBKHMfBiNFDnOIsJXqDEByV";
       let url = apiPaths[trendId];
       apis
-        .getTrendList(url)
+        .getTrendList(url,{
+          hours:this.filterTime
+        })
         .then((data) => {
-          console.log(data)
+          console.log(data);
           this.trendList = data;
           this.loading = false;
         })

@@ -1,10 +1,10 @@
 import request from "../utils/request";
 import xml2js from "xml2js";
 export default {
-  getTrendList: (url) => {
+  getTrendList: (url,params={}) => {
     return new Promise((resolve, reject) => {
       request
-        .get(url)
+        .get(url,{params:params})
         .then(function (response) {
           // handle success
           // console.log(response);
@@ -13,7 +13,7 @@ export default {
           xml2js.parseString(xml, function (err, result) {
             let channel_items = result.rss.channel[0].item || [];
             channel_items.map((item) => {
-              console.log(item)
+              // console.log(item)
               data.push({
                 author: (item.author && item.author[0]) || "-",
                 shares: parseInt(item["buzzsumo:shares"][0]["buzzsumo:total"][0]) || "1",
