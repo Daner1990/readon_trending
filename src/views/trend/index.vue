@@ -12,6 +12,7 @@
         :default-sort="{ prop: 'score', order: 'descending' }"
         stripe
         style="width: 100%"
+        height="100vh - 120px - 70px"
         v-loading="loading"
         element-loading-text="Loading..."
         :element-loading-svg="svg"
