@@ -80,8 +80,16 @@ export default {
         },
         { label: "South Korea", value: "southkorea" },
         {
-          label: "USA",
-          value: "usa",
+          label: "Franch",
+          value: "franch",
+        },
+        {
+          label: "Spain",
+          value: "spain",
+        },
+        {
+          label: "Germany",
+          value: "germany",
         },
       ],
 
