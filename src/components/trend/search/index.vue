@@ -91,6 +91,10 @@ export default {
           label: "Germany",
           value: "germany",
         },
+        {
+          label: "United Kingdom",
+          value: "uk",
+        },
       ],
 
       selectTime: {},

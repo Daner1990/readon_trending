@@ -28,7 +28,8 @@ let coutryList = {
   usa:"VW5pdGVkIFN0YXRlc2tqaGFrc2RoYWto",
   franch:"RnJhbmNla2poYWtzZGhha2g%3D",
   spain:"U3BhaW5ramhha3NkaGFraA%3D%3D",
-  germany:"R2VybWFueWtqaGFrc2RoYWto"
+  germany:"R2VybWFueWtqaGFrc2RoYWto",
+  uk:"VW5pdGVkIEtpbmdkb21ramhha3NkaGFraA%3D%3D"
 };
 
 let courtryRelativeList = {
@@ -40,7 +41,8 @@ let courtryRelativeList = {
   usa:"YWxsa2poYWtzZGhha2g%3D",
   franch:"YWxsa2poYWtzZGhha2g%3D",
   spain:"YWxsa2poYWtzZGhha2g%3D",
-  germany:"YWxsa2poYWtzZGhha2g%3D"
+  germany:"YWxsa2poYWtzZGhha2g%3D",
+  uk:"YWxsa2poYWtzZGhha2g%3D"
 };
 
 export default function (params = {}) {
